@@ -14,11 +14,7 @@
 
         <!-- Scripts -->
          {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
-<<<<<<< HEAD
         <script src="{{ asset('js/app.js') }}" defer></script>
-=======
-        <script src="{{ secure_asset('js/app.js') }}" defer></script>
->>>>>>> 54ad3588e61b92dcd1b92add5fc346f81e10ef5b
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -26,15 +22,9 @@
 
         <!-- Styles -->
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
-<<<<<<< HEAD
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
         <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
-=======
-        <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
-        {{-- この章の後半で作成するCSSを読み込みます --}}
-        <link href="{{ secure_asset('css/admin.css') }}" rel="stylesheet">
->>>>>>> 54ad3588e61b92dcd1b92add5fc346f81e10ef5b
     </head>
     <body>
         <div id="app">
