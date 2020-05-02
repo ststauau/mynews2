@@ -9,6 +9,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Auth::routes();
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,12 +31,12 @@ Route::group(['prefix' => 'admin'], function() {
 });
 
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function() {
 
     Route::get('news/profile/create', 'Admin\ProfileController@add');
     Route::get('news/profile/edit', 'Admin\ProfileController@edit');
 
-
+    Route::get('news/create','Admin\NewsController@add');
 
 });
 
@@ -42,3 +46,5 @@ Route::group(['prefix' => 'admin'], function() {
 // 【応用】 前章でAdmin/ProfileControllerを作成し、add Action, edit Actionを追加しました。
 // web.phpを編集して、admin/profile/create にアクセスしたら ProfileController の add Action に、
 // admin/profile/edit にアクセスしたら ProfileController の edit Action に割り当てるように設定してください。
+
+Route::get('/home', 'HomeController@index')->name('home');
