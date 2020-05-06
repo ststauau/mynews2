@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
+
+    // 管理者サイド　+ - + - + - + - + - + - + - + - + - + - + - + 
+
     public function add()
     {
         return view('admin.profile.create');
@@ -26,6 +29,8 @@ class ProfileController extends Controller
     {
         return redirect('admin/profile/edit');
     }
+
+
 
 
     

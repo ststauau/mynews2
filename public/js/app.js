@@ -37493,7 +37493,12 @@ function normalizeComponent (
     options._ssrRegister = hook
   } else if (injectStyles) {
     hook = shadowMode
-      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      ? function () {
+        injectStyles.call(
+          this,
+          (options.functional ? this.parent : this).$root.$options.shadowRoot
+        )
+      }
       : injectStyles
   }
 
@@ -49761,16 +49766,28 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/users.scss":
+/*!***********************************!*\
+  !*** ./resources/sass/users.scss ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!***********************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/admin.scss ./resources/sass/profile.scss ***!
-  \***********************************************************************************************************************/
+/*!***************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/admin.scss ./resources/sass/users.scss ./resources/sass/profile.scss ***!
+  \***************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /home/asano/webroot/php_projects/mynews2/resources/js/app.js */"./resources/js/app.js");
 __webpack_require__(/*! /home/asano/webroot/php_projects/mynews2/resources/sass/app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! /home/asano/webroot/php_projects/mynews2/resources/sass/admin.scss */"./resources/sass/admin.scss");
+__webpack_require__(/*! /home/asano/webroot/php_projects/mynews2/resources/sass/users.scss */"./resources/sass/users.scss");
 module.exports = __webpack_require__(/*! /home/asano/webroot/php_projects/mynews2/resources/sass/profile.scss */"./resources/sass/profile.scss");
 
 

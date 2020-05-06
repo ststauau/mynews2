@@ -21,23 +21,37 @@ Route::get('/info', 'HomeController@info');
 
 
 
-Route::group(['prefix' => 'admin'], function() {
-     Route::get('news/create', 'Admin\NewsController@add');
-    //#    Route::get('XXX', 'AAAController@bbb');
+// Route::group(['prefix' => 'admin'], function() {
+//      Route::get('news/create', 'Admin\NewsController@add');
+//     //#    Route::get('XXX', 'AAAController@bbb');
 
-    //# Route::get('profile/create', 'Admin\ProfileController@create');
-    //# Route::get('profile/edit', 'Admin\ProfileController@edit');
+//     //# Route::get('profile/create', 'Admin\ProfileController@create');
+//     //# Route::get('profile/edit', 'Admin\ProfileController@edit');
     
-});
+// });
 
 
 Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function() {
 
-    Route::get('news/profile/create', 'Admin\ProfileController@add');
-    Route::get('news/profile/edit', 'Admin\ProfileController@edit');
+    Route::get('profile/create', 'Admin\ProfileController@add');
+
+    Route::get('profile/edit', 'Admin\ProfileController@edit');
 
     Route::get('news/create','Admin\NewsController@add');
 
+});
+
+
+
+
+Route::group(['prefix' => 'users', 'middleware'=>'auth'], function() {
+
+
+
+    Route::get('profile/edit', 'Users\ProfileController@edit');
+
+    Route::get('news/create','Users\NewsController@add');
+    
 });
 
 
