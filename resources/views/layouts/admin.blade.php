@@ -23,6 +23,10 @@
         <!-- Styles -->
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+        <!-- 追加　浅野 -->
+        <style>body{background-color: tomato;}</style>
+
         {{-- この章の後半で作成するCSSを読み込みます --}}
         <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
     </head>

@@ -10,6 +10,7 @@
 |
 */
 
+
 Auth::routes();
 
 
@@ -31,34 +32,60 @@ Route::get('/info', 'HomeController@info');
 // });
 
 
-Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function() {
 
-    Route::get('profile/create', 'Admin\ProfileController@add');
+// Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function() {
 
-    Route::get('profile/edit', 'Admin\ProfileController@edit');
+//     Route::get('profile/create', 'Admin\ProfileController@add');
 
-    Route::get('news/create','Admin\NewsController@add');
+//     Route::get('profile/edit', 'Admin\ProfileController@edit');
 
-});
+//     Route::get('news/create','Admin\NewsController@add');
 
-
-
-
-Route::group(['prefix' => 'users', 'middleware'=>'auth'], function() {
+// });
 
 
+// Route::group(['prefix' => 'users', 'middleware'=>'auth'], function() {
+//     Route::get('profile/edit', 'Users\ProfileController@edit');
+//     Route::get('news/create','Users\NewsController@add');
+// });
 
-    Route::get('profile/edit', 'Users\ProfileController@edit');
-
-    Route::get('news/create','Users\NewsController@add');
-    
-});
-
-
-// 「http://XXXXXX.jp/XXX というアクセスが来たときに、
-// AAAControllerのbbbというAction に渡すRoutingの設定」を書いてみてください。
-// 【応用】 前章でAdmin/ProfileControllerを作成し、add Action, edit Actionを追加しました。
-// web.phpを編集して、admin/profile/create にアクセスしたら ProfileController の add Action に、
-// admin/profile/edit にアクセスしたら ProfileController の edit Action に割り当てるように設定してください。
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+/*
+|--------------------------------------------------------------------------
+| 2) User ログイン後
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'auth:user'], function() {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+ 
+/*
+|--------------------------------------------------------------------------
+| 3) Admin 認証不要
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/',         function () { return redirect('/admin/home'); });
+    Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
+    Route::post('login',    'Admin\LoginController@login');
+
+    
+    // あさの　追加 →　やっぱやめ
+//    Route::get('register',      'Admin\ProfileController@add');
+//    Route::post('register',     'Admin\RegisterController@create');
+
+});
+ 
+/*
+|--------------------------------------------------------------------------
+| 4) Admin ログイン後
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
+    Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
+    Route::get('home',      'Admin\HomeController@index')->name('admin.home');
+});
