@@ -73,10 +73,6 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
     Route::post('login',    'Admin\LoginController@login');
 
-    
-    // あさの　追加 →　やっぱやめ
-//    Route::get('register',      'Admin\ProfileController@add');
-//    Route::post('register',     'Admin\RegisterController@create');
 
 });
  
@@ -101,4 +97,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::post('profile/edit', 'Admin\ProfileController@update'); # 追記
 
 
+
+    // laravel 15で追加
+    Route::get('news', 'Admin\NewsController@index'); // 追記
+
+
 });
+
+
+
