@@ -24,10 +24,10 @@ Route::get('/info', 'HomeController@info');
 
 // Route::group(['prefix' => 'admin'], function() {
 //      Route::get('news/create', 'Admin\NewsController@add');
-//     //#    Route::get('XXX', 'AAAController@bbb');
+//     //    Route::get('XXX', 'AAAController@bbb');
 
-//     //# Route::get('profile/create', 'Admin\ProfileController@create');
-//     //# Route::get('profile/edit', 'Admin\ProfileController@edit');
+//     // Route::get('profile/create', 'Admin\ProfileController@create');
+//     // Route::get('profile/edit', 'Admin\ProfileController@edit');
     
 // });
 
@@ -87,19 +87,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
 
 
     Route::get('news/create', 'Admin\NewsController@add');
-    Route::post('news/create', 'Admin\NewsController@create'); # 追記
+    Route::post('news/create', 'Admin\NewsController@create');
 
 
-    Route::get('profile/create', 'Admin\ProfileController@add'); # 追記
-    Route::post('profile/create', 'Admin\ProfileController@create'); # 追記
+    Route::get('profile/create', 'Admin\ProfileController@add');
+    Route::post('profile/create', 'Admin\ProfileController@create');
 
-    Route::get('profile/edit', 'Admin\ProfileController@edit'); # 追記
-    Route::post('profile/edit', 'Admin\ProfileController@update'); # 追記
-
-
+    Route::get('profile/edit', 'Admin\ProfileController@edit');
+    Route::post('profile/edit', 'Admin\ProfileController@update');
 
     // laravel 15で追加
-    Route::get('news', 'Admin\NewsController@index'); // 追記
+    Route::get('news', 'Admin\NewsController@index');
 
 
 });

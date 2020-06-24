@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 class ProfileController extends Controller
 {
 
-    // 管理者サイド　+ - + - + - + - + - + - + - + - + - + - + - + 
+    // 管理者サイド+ - + - + - + - + - + - + - + - + - + - + - + 
 
     public function add()
     {
