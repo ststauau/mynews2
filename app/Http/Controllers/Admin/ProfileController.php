@@ -89,6 +89,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
 
+        
      // 16        
     // Validationをかける
         $this->validate($request, Profile::$rules);
