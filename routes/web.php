@@ -73,7 +73,8 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
     Route::post('login',    'Admin\LoginController@login');
 
-
+    // laravel 15で追加
+    Route::get('news', 'Admin\NewsController@index');
 });
  
 /*
@@ -93,11 +94,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::get('profile/create', 'Admin\ProfileController@add');
     Route::post('profile/create', 'Admin\ProfileController@create');
 
+
+    // 16
     Route::get('profile/edit', 'Admin\ProfileController@edit');
     Route::post('profile/edit', 'Admin\ProfileController@update');
 
-    // laravel 15で追加
-    Route::get('news', 'Admin\NewsController@index');
+    // 16
+    Route::get('profile', 'Admin\ProfileController@index');
+    Route::get('profile/delete', 'Admin\ProfileController@delete');
+
+    
+// Laravel 15
+    Route::get('news/edit', 'Admin\NewsController@edit');
+    Route::post('news/edit', 'Admin\NewsController@update');
+
+
+    Route::get('news/delete', 'Admin\NewsController@delete');
 
 
 });
