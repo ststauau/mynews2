@@ -9,6 +9,13 @@ use App\Http\Controllers\Controller;
 // Profile Modelが扱えるようになる
 use App\Profile;
 
+// 以下を追記 17
+use App\profileHistory;
+
+// 以下を追記 17
+use Carbon\Carbon;
+
+
 class ProfileController extends Controller
 {
 
@@ -102,7 +109,16 @@ class ProfileController extends Controller
         // 該当するデータを上書きして保存する
         $profile->fill($profile_form)->save();
     
-        return redirect('admin/profile/edit');
+
+
+        // 以下を追記
+        $history = new profileHistory;
+        $history->profile_id = $profile->id;
+        $history->edited_at = Carbon::now();
+        $history->save();
+
+
+        return redirect('admin/profile/');
 
         // return redirect('admin/profile/edit');
 
