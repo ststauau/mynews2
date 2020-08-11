@@ -115,4 +115,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
 });
 
 
+Route::get('/', 'NewsController@index');
 
+Route::get('/profile', 'ProfileController@index');
