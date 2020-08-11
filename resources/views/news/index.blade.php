@@ -1,5 +1,8 @@
 @extends('layouts.front')
 
+<!-- Laravel 19 課題  -->
+
+
 @section('content')
     <div class="container">
         <hr color="#c0c0c0">

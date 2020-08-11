@@ -1,5 +1,8 @@
 <?php
 
+// Laravel 19 課題
+
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
